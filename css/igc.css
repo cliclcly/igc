@@ -1,0 +1,145 @@
+/* igc.css */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    background-color: #FFF;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: #FF8F86;
+    background-clip: padding-box;
+}
+
+.igc-nav {
+    height: 56px;
+    background-color: #E86DA4;
+    box-shadow: 0px 1px 1px #000;
+}
+
+.igc-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: inherit;
+}
+
+.igc-nav li {
+    line-height: 56px;
+    padding: 0px 24px;
+}
+
+.igc-nav li:hover {
+    background-color: #F472FF;
+}
+
+.igc-footer {
+    position: absolute;
+    bottom: 0px;
+    height: 56px;
+    width: 100%;
+    line-height: 56px;
+    padding: 0px 24px;
+    background-color: #E86DA4;
+}
+
+.igc-tabs {
+    height: 48px;
+    margin: 4px 0px 0px 0px;
+}
+
+.igc-tabs ul {
+    height: 100%;
+    list-style: none;
+    padding: 0px 8px;
+    margin: 0px;
+}
+
+.igc-tabs li {
+    display: inline-block;
+    height: 100%;
+    line-height: 48px;
+    padding: 0px 8px;
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    cursor: pointer;
+}
+
+.igc-tabs li.selected {
+    background-color: #FFBA79;
+}
+
+.igc-tabs-page {
+    padding: 0px 8px 56px 8px;
+}
+
+.igc-tabs-gone {
+    display: none;
+}
+
+.igc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+}
+
+.igc-img {
+    width: 48px;
+    height: 48px;
+}
+
+.igc-resource {
+    position: relative;
+    max-width: 512px;
+    height: 64px;
+    margin: 4px 0px;
+    padding: 6px 4px 4px 4px;
+    background-color: #FFBA79;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 1px #E8906E;
+}
+
+.igc-resource span {
+    line-height: 53px;
+}
+
+.igc-resource input {
+    width: calc(100% - 58px);
+    height: 100%;
+    margin: 0;
+    padding: 0px 8px;
+    border: none;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.igc-resource img {
+    margin: 3px;
+    vertical-align: middle;
+}
+
+.igc-auto {
+    position: relative;
+    max-width: 512px;
+    height: 64px;
+    margin: 4px 0px;
+    padding: 6px 4px 4px 4px;
+    background-color: #FFBA79;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 1px #E8906E;
+}
+
+.igc-auto span {
+    line-height: 53px;
+}

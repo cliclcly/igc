@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+    <head>
+        <title>Idle Game Creator</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link href='css/igc.css' rel='stylesheet' type='text/css'>
+        <script src='js/igc-tabs.js'></script>
+    </head>
+    <body>
+        <header>
+            <nav class="igc-nav">
+                <ul>
+                    <li>IGC</li>
+                </ul>
+        </header>
+
+        <nav class='igc-tabs'>
+            <ul>
+                <li id='resources' class='selected'>Resources</li>
+                <li id='autos'>Automatics</li>
+                <li id='upgrades'>Upgrades</li>
+            </ul>
+        </nav>
+
+        <div id='resources' class='igc-tabs-page'>
+            <ul class='igc-list'>
+                <li class='igc-resource'>
+                    <span>
+                        <input placeholder='Resource name'/>
+                        <img src='img/plus.png' class='igc-img'/>
+                    </span>
+                </li>
+                <li class='igc-resource'>
+                    <span><img src='img/plus.png'/></span>
+                </li>
+            </ul>
+        </div>
+
+        <div id='autos' class='igc-tabs-page igc-tabs-gone'>
+            <ul class='igc-list'>
+                <li class='igc-auto'>
+                    <span>
+                        <input placeholder='Automatic name'/>
+                        <select>
+                            <option>Bronze</option>
+                            <option>Silver</option>
+                            <option>Gold</option>
+                        </select>
+                        <input placeholder='Base cost'/>
+                        <input placeholder='Scale'/>
+                        <select>
+                            <option>%</option>
+                            <option>^</option>
+                        </select>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div id='upgrades' class='igc-tabs-page igc-tabs-gone'>
+
+        </div>
+
+        <footer class='igc-footer'>
+            <strong>copyright 2015 attksrfc</strong>
+        </footer>
+    </body>
+</html>
