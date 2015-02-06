@@ -1,0 +1,13 @@
+<li class='igc-auto'>
+    <span>
+        <input placeholder='Automatic name'/>
+        <select ng-model="selected.resource" ng-options="res as res.name for res in $state.current.data.creator.resources | orderBy: 'name'"></select>
+        <input placeholder='Base cost'/>
+        <input placeholder='Scale'/>
+        <select>
+            <option>%</option>
+            <option>^</option>
+        </select>
+    </span>
+    {{resource}}
+</li>

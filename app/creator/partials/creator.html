@@ -1,0 +1,9 @@
+<nav class="igc-tabs">
+    <ul>
+        <li ng-class="{selected: $state.includes('ig.creator.resources')}" ui-sref="ig.creator.resources">Resources</li>
+        <li ng-class="{selected: $state.includes('ig.creator.automatics')}" ui-sref="ig.creator.automatics">Automatics</li>
+        <li ng-class="{selected: $state.includes('ig.creator.upgrades')}" ui-sref="ig.creator.upgrades">Upgrades</li>
+    </ul>
+</nav>
+
+<div ui-view></div>

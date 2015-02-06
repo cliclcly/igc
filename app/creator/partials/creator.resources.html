@@ -1,0 +1,15 @@
+<form class="form-horizontal igc-tabs-page" data-ng-submit="addResource(addResourceFrm)" name="addResourceFrm" novalidate>
+  <ul class="igc-list">
+    <li class='igc-resource'>
+      <span>
+        <input required name-unique="resource" placeholder="Resource name" ng-model="resourceInfo.resourceName"/>
+        <img ng-click="addResource(addResourceFrm)" src='img/plus.png'/>
+      </span>
+    </li>
+    <li ng-repeat="res in $state.current.data.creator.resources | orderBy: 'name'" class='igc-resource'>
+      {{res.name}}  <span class="fa fa-remove" ng-click="remove(res)"></span>
+    </li>
+  </ul>
+  <div ng-if="addResourceFrm.$invalid">Form is invalid<div>
+  <div ng-if="addResourceFrm.$error.unique">Name Already Exists</div>
+</form>
