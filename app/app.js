@@ -5,7 +5,8 @@ var app = angular.module('app', [
   'ui.router',
   'creatorModuleApp',
   'playerModuleApp',
-  'uniqueName'
+  'uniqueName',
+  'filtersModule'
 ])
 
 
@@ -15,7 +16,7 @@ var app = angular.module('app', [
 }])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,$urlRouterProvider){
-
+  //If invalid url, go to this url
   $urlRouterProvider.otherwise("/creator/resources");
 
   $stateProvider.state('ig', {
