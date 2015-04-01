@@ -1,5 +1,8 @@
 var uniqueName = angular.module('uniqueName', []);
 
+//Directives are attached to DOM elements that gives it custom behaviors
+//https://docs.angularjs.org/guide/directive
+
 //Checks to see if the modeled value already exists in an array, creates and sets a custom validity field called 'unique'
 uniqueName.directive('nameUnique', ["$timeout", "$state", function($timeout, $state) {
   return {
