@@ -6,9 +6,8 @@ uniqueName.directive('nameUnique', ["$timeout", "$state", function($timeout, $st
     require: 'ngModel',
     link: function(scope, element, attrs, ngModel) {
        var stop_timeout;
-       return scope.$watch(function() {
-          return ngModel.$modelValue;
-       }, function(name) {
+
+       var fun = function(name) {
           $timeout.cancel(stop_timeout);
           if (!name) {
             return ngModel.$setValidity('unique', true);
@@ -27,7 +26,18 @@ uniqueName.directive('nameUnique', ["$timeout", "$state", function($timeout, $st
           }, 200);
 
 
+       };
+
+       scope.$on('distinctName', function(e, type) {
+         if(type === attrs.nameUnique) {
+           fun();
+         }
        });
+
+       return scope.$watch(function() {
+          return ngModel.$modelValue;
+       }, fun);
+
 
        }
 
