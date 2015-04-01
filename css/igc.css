@@ -34,10 +34,14 @@ body {
 .igc-nav li {
     line-height: 56px;
     padding: 0px 24px;
+    display: inline;
+}
+.igc-nav a {
+  float: right;
 }
 
 .igc-nav li:hover {
-    background-color: #F472FF;
+    /*background-color: #F472FF;*/
 }
 
 .igc-footer {

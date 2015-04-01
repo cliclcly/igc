@@ -1,0 +1,40 @@
+(function() {
+'use strict';
+
+var playerModuleApp = angular.module('playerModuleApp', [
+  'playerController',
+  'playerStatsController',
+  'playerUpgradesController'
+
+
+])
+
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+  .state('ig.player', {
+    url: '/player',
+    abstract: true,
+    data: {
+
+    },
+    views: {
+        '@': {
+            templateUrl: 'app/player/partials/player.html',
+            controller: 'player.Ctrl'
+        }
+    }
+  })
+  .state('ig.player.stats', {
+    url: '/stats',
+    templateUrl: 'app/player/partials/player.stats.html',
+    controller: 'player.stats.Ctrl'
+  })
+  .state('ig.player.upgrades', {
+    url: '/upgrades',
+    templateUrl: 'app/player/partials/player.upgrades.html',
+    controller: 'player.upgrades.Ctrl'
+  });
+
+
+}]);
+}());

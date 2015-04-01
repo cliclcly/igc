@@ -16,6 +16,11 @@
         <script src='app/creator/controllers/creator.resources.Ctrl.js'></script>
         <script src='app/creator/controllers/creator.upgrades.Ctrl.js'></script>
 
+        <script src='app/player/player.js'></script>
+        <script src='app/player/controllers/player.Ctrl.js'></script>
+        <script src='app/player/controllers/player.upgrades.Ctrl.js'></script>
+        <script src='app/player/controllers/player.stats.Ctrl.js'></script>
+
         <script src="directives/distinctName.js"></script>
     </head>
     <body>
@@ -23,6 +28,7 @@
             <nav class="igc-nav">
                 <ul>
                     <li>IGC</li>
+                    <li><a ng-if="$state.includes('ig.creator')" ui-sref="ig.player.stats">To Player</a><a ng-if="$state.includes('ig.player')" ui-sref="ig.creator.resources">To Creator</a></li>
                 </ul>
             </nav>
         </header>
