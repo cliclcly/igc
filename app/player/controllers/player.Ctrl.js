@@ -7,12 +7,15 @@ playerController.controller('player.Ctrl', ['$scope','$stateParams','$state','$i
 function($scope,$stateParams,$state,$interval) {
   $scope.frameCount = 0;
 
-  var updateGame = function() {
+  var updateGame = function( time ) {
     $scope.frameCount++;
     if(!$scope.$$phase) {
       $scope.$apply();
     }
+    window.requestAnimationFrame( updateGame );
   };
+
+  window.requestAnimationFrame( updateGame );
 
   //Print out frame count every second to the console
   // $interval(function() {
