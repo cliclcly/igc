@@ -3,6 +3,7 @@
 
 var playerModuleApp = angular.module('playerModuleApp', [
   'playerController',
+  'playerGameController',
   'playerStatsController',
   'playerUpgradesController'
 
@@ -23,6 +24,11 @@ var playerModuleApp = angular.module('playerModuleApp', [
             controller: 'player.Ctrl'
         }
     }
+  })
+  .state('ig.player.game', {
+    url: '/game',
+    templateUrl: 'app/player/partials/player.game.html',
+    controller: 'player.game.Ctrl'
   })
   .state('ig.player.stats', {
     url: '/stats',

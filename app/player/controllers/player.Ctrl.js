@@ -5,7 +5,12 @@ var playerController = angular.module('playerController', []);
 
 playerController.controller('player.Ctrl', ['$scope','$stateParams','$state','$interval',
 function($scope,$stateParams,$state,$interval) {
+  $scope.money = 0;
   $scope.frameCount = 0;
+
+  $scope.$on('killzed', function(args) {
+    $scope.money++;
+  });
 
   var updateGame = function( time ) {
     $scope.frameCount++;
