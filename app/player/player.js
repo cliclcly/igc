@@ -16,7 +16,12 @@ var playerModuleApp = angular.module('playerModuleApp', [
     url: '/player',
     abstract: true,
     data: {
-
+      money: 10,
+      buildings : {
+        pistol : 0,
+        m4 : 0,
+        katana : 0
+      }
     },
     views: {
         '@': {
