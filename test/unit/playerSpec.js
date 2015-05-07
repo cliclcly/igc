@@ -20,10 +20,9 @@ describe('Player Controller', function() {
   }));
 
   it('should increment money on killzed broadcast', function() {
-    var ctrl = $controller('player.Ctrl', {  '$scope':$scope,
-                                        '$state':$state,
-                                        'stateParams':$stateParams
-                                        });
+    var ctrl = $controller('player.Ctrl', { '$scope':$scope,
+                                            '$state':$state,
+                                            'stateParams':$stateParams });
 
     $scope.$broadcast('killzed', []);
 

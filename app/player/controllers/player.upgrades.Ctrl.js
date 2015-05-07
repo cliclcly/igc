@@ -12,7 +12,7 @@ function($scope,$stateParams,$state) {
     if (!$state.current.data.buildings[type]) {
       $state.current.data.buildings[type] = 0;
     }
-    
+
     $state.current.data.buildings[type]++;
   };
 
