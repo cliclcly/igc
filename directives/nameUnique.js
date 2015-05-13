@@ -1,4 +1,4 @@
-var uniqueName = angular.module('uniqueName', []);
+var uniqueName = angular.module('nameUnique', []);
 
 //Directives are attached to DOM elements that gives it custom behaviors
 //https://docs.angularjs.org/guide/directive

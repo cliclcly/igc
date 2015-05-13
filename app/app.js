@@ -5,7 +5,7 @@ var app = angular.module('app', [
   'ui.router',
   'creatorModuleApp',
   'playerModuleApp',
-  'uniqueName',
+  'nameUnique',
   'filtersModule'
 ])
 
