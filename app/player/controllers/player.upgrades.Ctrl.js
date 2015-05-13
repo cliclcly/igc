@@ -13,7 +13,16 @@ function($scope,$stateParams,$state) {
       $state.current.data.buildings[type] = 0;
     }
 
-    $state.current.data.buildings[type]++;
+    $state.current.config.automatics.forEach( function(automatic, index) {
+      if (automatic.id === type) {
+        if ($state.current.data.money < automatic.base_cost) {
+          return;
+        }
+        
+        $state.current.data.buildings[type]++;
+        $state.current.data.money -= automatic.base_cost;
+      }
+    });
   };
 
 }]);

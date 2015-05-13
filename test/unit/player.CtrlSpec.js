@@ -25,22 +25,4 @@ describe('Player Upgrades Controller', function() {
                             }
                           };
   }));
-
-  it('should have a buy function', function() {
-    var ctrl = $controller( 'player.upgrades.Ctrl', {  '$scope': $scope,
-                                                    '$state': $state,
-                                                    '$stateParams': $stateParams });
-
-    expect( typeof( $scope.buy ) ).toBe( "function" );
-  });
-
-  it('should increment building count after buy', function() {
-    var ctrl = $controller( 'player.upgrades.Ctrl', { '$scope': $scope,
-                                                      '$state': $state,
-                                                      '$stateParams': $stateParams });
-
-    $scope.buy( "testBuilding" );
-
-    expect( $state.current.data.buildings["testBuilding"]).toBe( 1 );
-  });
 });
