@@ -6,8 +6,6 @@ var playerModuleApp = angular.module('playerModuleApp', [
   'playerGameController',
   'playerStatsController',
   'playerUpgradesController'
-
-
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
