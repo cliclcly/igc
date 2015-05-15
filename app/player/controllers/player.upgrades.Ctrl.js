@@ -5,24 +5,21 @@ var playerUpgradesController = angular.module('playerUpgradesController', []);
 
 playerUpgradesController.controller('player.upgrades.Ctrl', ['$scope','$stateParams','$state',
 function($scope,$stateParams,$state) {
-  console.log("Player Upgrades Controller");
   $state.current.data.test.stateChangeCount++;
 
   $scope.buy = function( type ) {
     if (!$state.current.data.buildings[type]) {
-      $state.current.data.buildings[type] = 0;
+      $state.current.data.buildings[type] = { count: 0};
     }
 
-    $state.current.config.automatics.forEach( function(automatic, index) {
-      if (automatic.id === type) {
-        if ($state.current.data.money < automatic.base_cost) {
-          return;
-        }
-        
-        $state.current.data.buildings[type]++;
-        $state.current.data.money -= automatic.base_cost;
-      }
-    });
+    var automatic = $state.current.data.config.automatics[type];;
+    if ($state.current.data.resources['dosh'] < automatic.base_cost) {
+      console.log('Not enough dosh for that one, babe');
+      return;
+    }
+
+    $state.current.data.buildings[type].count++;
+    $state.current.data.resources['dosh'] -= automatic.base_cost;
   };
 
 }]);

@@ -5,38 +5,41 @@ var playerController = angular.module('playerController', []);
 
 playerController.controller('player.Ctrl', ['$scope','$stateParams','$state','$interval',
 function($scope,$stateParams,$state,$interval) {
-  var delta, last_time = null;
-  $scope.frameCount = 0;
+  $scope.last_time = null;
+  var delta = null;
 
   $scope.$on('killzed', function(args) {
-    $state.current.data.money++;
+    $state.current.data.resources['dosh']++;
   });
 
-  var updateGame = function( time ) {
-    if ( !last_time ) {
-      last_time = time;
+  $scope.updateGame = function( time ) {
+    if ( ! $scope.last_time ) {
+      $scope.last_time = time;
     } else {
-      delta = time - last_time;
-      $scope.frameCount = delta;
+      delta = time - $scope.last_time;
 
-      var dosh = $state.current.data.buildings.pistol * 0.1 * delta / 1000;
-      $state.current.data.money += dosh;
+      for (var building in $state.current.data.buildings) {
+        if ($state.current.data.buildings.hasOwnProperty( building )) {
+          produce.call(this, building, delta);
+        }
+      }
 
-      dosh = $state.current.data.buildings.m4 * 0.333 * delta / 1000;
-      $state.current.data.money += dosh;
-
-      dosh = $state.current.data.buildings.katana * 1 * delta / 1000;
-      $state.current.data.money += dosh;
-
-      last_time = time;
+      $scope.last_time = time;
     }
 
     if(!$scope.$$phase) {
       $scope.$apply();
     }
-    window.requestAnimationFrame( updateGame );
+    window.requestAnimationFrame( $scope.updateGame );
   };
 
-  window.requestAnimationFrame( updateGame );
+  window.requestAnimationFrame( $scope.updateGame );
+
+  var produce = function( automatic_id, delta) {
+    var automatic = $state.current.data.config.automatics[automatic_id];
+    var count = $state.current.data.buildings[automatic_id].count;
+    var base_rate = automatic.produces['dosh'];
+    $state.current.data.resources['dosh'] += count * base_rate * delta / 1000;
+  };
 }]);
 }());

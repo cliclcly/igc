@@ -14,11 +14,22 @@ var playerModuleApp = angular.module('playerModuleApp', [
     url: '/player',
     abstract: true,
     data: {
-      money: 10,
+      resources: {
+        'dosh': 0
+      },
       buildings : {
-        pistol : 0,
-        m4 : 0,
-        katana : 0
+        '9mm': { count: 0 }
+      },
+      config: {
+        resources: { name: 'Dosh', description: 'Money money money'},
+        automatics: {
+          '9mm': {  name: '9mm',
+                    description: 'Standard issue nine millimeter pistol',
+                    base_cost: 1,
+                    produces: {
+                      'dosh': 1
+                    }}
+        }
       }
     },
     views: {

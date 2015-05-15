@@ -1,13 +1,10 @@
 <h3>Player Upgrades</h3>
 
-<p>9mm Pistol</p>
-<p>Kills one zed every 10 seconds.</p>
-<button ng-click='buy("pistol")'>Buy</button>
-
-<p>M4 Rifle</p>
-<p>Kills one zed every 3 seconds.</p>
-<button ng-click='buy("m4")'>Buy</button>
-
-<p>Katana</p>
-<p>Kills one zed every second.</p>
-<button ng-click='buy("katana")'>Buy</button>
+<ul>
+  <li ng-repeat="automatic in $state.current.data.config.automatics">
+    <p>{{automatic.name}}</p>
+    <p>{{automatic.description}}</p>
+    <p>{{automatic.base_cost}}</p>
+    <button ng-click="buy(automatic)">Buy</button>
+  </li>
+</ul>

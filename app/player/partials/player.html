@@ -1,4 +1,4 @@
-<h3>Dosh: {{$state.current.data.money | number: 0}}</h3>
+<h3>Dosh: {{$state.current.data.resources['dosh'] | number: 0}}</h3>
 <nav class="igc-tabs">
     <ul>
         <li ng-class="{selected: $state.includes('ig.player.game')}" ui-sref="ig.player.game">Game</li>
@@ -6,5 +6,4 @@
         <li ng-class="{selected: $state.includes('ig.player.upgrades')}" ui-sref="ig.player.upgrades">Upgrades</li>
     </ul>
 </nav>
-Frame Count: {{frameCount}}
 <div ui-view></div>
