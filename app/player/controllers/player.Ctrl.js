@@ -15,6 +15,16 @@ function($scope,$stateParams,$state,$interval) {
   $scope.updateGame = function( time ) {
     if ( ! $scope.last_time ) {
       $scope.last_time = time;
+
+      for (var id in $state.current.data.config.automatics) {
+        if ($state.current.data.config.automatics.hasOwnProperty(id)) {
+          var automatic = $state.current.data.config.automatics[id];
+
+          $state.current.data.buildings[id] = { count: 0,
+                                                cost: automatic.base_cost};
+        }
+      }
+
     } else {
       delta = time - $scope.last_time;
 

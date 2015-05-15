@@ -21,6 +21,11 @@ angular.module('filtersModule', [])
         }
         return uniqueList;
     };
+})
+.filter('floor', function() {
+  return function(input) {
+    return Math.floor(input);
+  }
 });
 
 

@@ -15,7 +15,18 @@ describe('Player Controller', function() {
     $controller = _$controller_;
     $injector = _$injector_;
     $state = $injector.get('$state');
+
     $state.current.data = { resources: {'dosh': 0}, buildings: {} };
+    $state.current.data.config = { automatics: {
+      '9mm': {  name: '9mm',
+                description: '9mm',
+                base_cost: 1,
+                produces: {
+                  dosh: 1
+                }
+              }
+    }};
+
     $stateParams = $injector.get('$stateParams');
   }));
 
@@ -30,19 +41,27 @@ describe('Player Controller', function() {
   });
 
   it('should increment resource for automatics', function() {
-    $state.current.data.config =  { automatics: {
-                                      '9mm': {produces: { dosh: 1 }}
-                                    }
-                                  };
-    $state.current.data.buildings['9mm'] = {count: 1};
     var ctrl = $controller('player.Ctrl', { '$scope': $scope,
                                             '$state': $state,
                                             '$stateParams': $stateParams });
 
     // simulate game loop running for 1 second
     $scope.updateGame(1);
+    $state.current.data.buildings['9mm'].count++;
     $scope.updateGame(1001);
 
     expect( $state.current.data.resources['dosh'] ).toBe(1);
+  });
+
+  it('should calculate initial base cost', function() {
+    var ctrl = $controller('player.Ctrl', { '$scope': $scope,
+                                            '$state': $state,
+                                            '$stateParams': $stateParams });
+
+    $scope.updateGame(1);
+    var base_cost = $state.current.data.config.automatics['9mm'].base_cost;
+    var current_cost = $state.current.data.buildings['9mm'].cost;
+
+    expect( base_cost ).toEqual( current_cost );
   });
 });

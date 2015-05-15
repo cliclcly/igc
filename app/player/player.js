@@ -28,7 +28,9 @@ var playerModuleApp = angular.module('playerModuleApp', [
                     base_cost: 1,
                     produces: {
                       'dosh': 1
-                    }}
+                    },
+                    cost_fn: function(n) { return n+1; }
+          }
         }
       }
     },

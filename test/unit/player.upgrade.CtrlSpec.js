@@ -17,7 +17,11 @@ describe('Player Upgrades Controller', function() {
     $state = $injector.get('$state');
     $state.current.data = { test : { stateChangeCount: 0 }};
     $state.current.data.config = { automatics: {
-      '9mm': {name: '9mm', description: '9mm', base_cost: 1}
+      '9mm': {  name: '9mm',
+                description: '9mm',
+                base_cost: 1,
+                cost_fn: function(n) {return n+1;}
+              }
     }};
 
     $stateParams = $injector.get('$stateParams');
@@ -37,8 +41,14 @@ describe('Player Upgrades Controller', function() {
   });
 
   it('should decrement dosh on buy', function() {
+    var cost = 2;
+
     $state.current.data.resources = { 'dosh': 10 };
-    $state.current.data.buildings = {};
+    $state.current.data.buildings = { '9mm': {
+                                        count: 0,
+                                        cost: cost
+                                      }
+                                    };
 
     var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
                                                       '$state': $state,
@@ -46,12 +56,16 @@ describe('Player Upgrades Controller', function() {
 
     $scope.buy('9mm');
 
-    expect( $state.current.data.resources['dosh'] ).toBe(9);
+    expect( $state.current.data.resources['dosh'] ).toBe(10 - cost);
   });
 
   it('should not increment building count if not enough resource', function() {
-    $state.current.data.resources = { 'dosh': 0 };
-    $state.current.data.buildings = { '9mm': 0 };
+    $state.current.data.resources = { 'dosh': 3 };
+    $state.current.data.buildings = { '9mm': {
+                                        count: 0,
+                                        cost: 5
+                                      }
+                                    };
 
     var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
                                                       '$state': $state,
@@ -60,5 +74,20 @@ describe('Player Upgrades Controller', function() {
     $scope.buy('9mm');
 
     expect( $state.current.data.buildings['9mm'].count ).toBe(0);
+  });
+
+  it('should increase cost after buying', function() {
+    $state.current.data.resources = { 'dosh': 10 };
+    $state.current.data.buildings = { '9mm' : {
+                                        count: 0,
+                                        cost: 1 }};
+
+    var ctrl = $controller('player.upgrades.Ctrl', { '$scope': $scope,
+                                            '$state': $state,
+                                            '$stateParams': $stateParams });
+
+
+    $scope.buy('9mm');
+    expect( $state.current.data.buildings['9mm'].cost).toBe(2);
   });
 });
