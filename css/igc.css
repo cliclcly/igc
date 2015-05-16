@@ -147,3 +147,38 @@ body {
 .igc-auto span {
     line-height: 53px;
 }
+
+.igc-resource-list {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+}
+
+.igc-resource-form {
+  display: inline-block;
+  vertical-align: top;
+  width: 65%;
+}
+
+.form-label {
+  display: inline-block;
+  width: 20%;
+}
+
+.form-input {
+  display: inline-block;
+  width: 75%;
+}
+
+.form-group {
+  position: relative;
+  margin: 4px 0px;
+  padding: 6px 4px 4px 4px;
+  background-color: #FFBA79;
+  border-radius: 5px;
+  box-shadow: inset 0px 2px 1px #E8906E;
+}
+
+.form-group.has-error {
+  background-color: red;
+}

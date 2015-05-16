@@ -1,15 +1,21 @@
-<form class="form-horizontal igc-tabs-page" data-ng-submit="addResource(addResourceFrm)" name="addResourceFrm" novalidate>
-  <ul class="igc-list">
-    <li class='igc-resource'>
-      <span>
-        <input required name-unique="creator.resources" placeholder="Resource name" ng-model="resourceInfo.resourceName"/>
-        <img ng-click="addResource(addResourceFrm)" src='img/plus.png'/>
-      </span>
-    </li>
-    <li ng-repeat="res in $state.current.data.creator.resources | orderBy: 'name'" class='igc-resource'>
-      {{res.name}}  <span class="fa fa-remove" ng-click="remove(res)"></span>
+<div class="igc-resource-list">
+  <ul>
+    <li ng-click="edit($index)" ng-repeat="res in $state.current.data.creator.resources | orderBy: 'name'" class='igc-resource'>
+      {{res.name}}  <span class="fa fa-remove" ng-click="remove($index)"></span>
     </li>
   </ul>
-  <div ng-if="addResourceFrm.$invalid">Form is invalid</div>
-  <div ng-if="addResourceFrm.$error.unique">Name Already Exists</div>
-</form>
+</div>
+
+<div class=" igc-resource-form">
+  <form data-ng-submit="submit(resourceForm)" name="resourceForm" novalidate>
+    <button type="submit">Save</button>
+    <div class="form-group" data-ng-class="{ 'has-error' : resourceForm.name.$invalid && resourceForm.$submitted}">
+      <div class="form-label">Name</div>
+      <input name="name" type="text" class="form-input" required ng-model="resourceInfo.name">
+    </div>
+    <div class="form-group" data-ng-class="{ 'has-error' : resourceForm.rate.$invalid && resourceForm.$submitted}">
+      <div class="form-label">Rate</div>
+      <input name="rate" type="number" class="form-input" required ng-model="resourceInfo.rate">
+    </div>
+  </form>
+</div>
