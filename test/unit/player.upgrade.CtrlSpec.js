@@ -90,4 +90,35 @@ describe('Player Upgrades Controller', function() {
     $scope.buy('9mm');
     expect( $state.current.data.buildings['9mm'].cost).toBe(2);
   });
+
+  it('should change building property on upgrade purchase', function() {
+    $state.current.data.buildings = { 'm4': {
+                                        count: 1,
+                                        cost: 0,
+                                        produces: {
+                                          'dosh': {base: 10, at: 10, add: 0, mult: 1}
+                                        }
+                                      }
+                                    };
+
+    $state.current.data.config.upgrades = {
+      'exp_rounds': {
+        cost: 1000,
+        effect: {
+          target: 'm4',
+          prop: 'produces',
+          resource: 'dosh',
+          add: 0.5,
+          mult: 1
+        }
+      }
+    };
+
+    var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
+                                                      '$state': $state,
+                                                      '$stateParams': $stateParams });
+
+    $scope.buy_upgrade('exp_rounds');
+    expect( $state.current.data.buildings['m4'].produces['dosh'].at ).toBe(15);
+  });
 });

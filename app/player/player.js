@@ -27,9 +27,30 @@ var playerModuleApp = angular.module('playerModuleApp', [
                     description: 'Standard issue nine millimeter pistol',
                     base_cost: 1,
                     produces: {
-                      'dosh': 1
+                      'dosh': {base: 1, at: 1, add: 0, mult: 1}
                     },
                     cost_fn: function(n) { return n+1; }
+          },
+          'm4': {   name: 'm4',
+                    description: 'A soldier\'s best friend',
+                    base_cost: 50,
+                    produces: {
+                      'dosh': 10
+                    },
+                    cost_fn: function(n) { return 10 * Math.pow(1.15, n+1) }
+          }
+        },
+        upgrades: {
+          'exp_rounds': {
+            name: 'Explosive Rounds',
+            description: 'Everything\'s better with more explosions',
+            cost: 1000,
+            effect: {
+              target_id: 'm4',
+              target_property: 'produces.dosh',
+              add: 0.5,
+              mult: 1
+            }
           }
         }
       }

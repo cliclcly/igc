@@ -28,5 +28,18 @@ function($scope,$stateParams,$state) {
     building.cost = new_cost;
   };
 
+  $scope.buy_upgrade = function (type) {
+    var config = $state.current.data.config.upgrades[type];
+    var buildings = $state.current.data.buildings;
+
+    var building = buildings[config.effect.target];
+    var prop = building[config.effect.prop];
+
+    var resource = prop[config.effect.resource];
+    resource.add += config.effect.add;
+    resource.mult *= config.effect.mult;
+
+    resource.at = resource.base * (1 + resource.add) * resource.mult;
+  };
 }]);
 }());
