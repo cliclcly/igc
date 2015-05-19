@@ -35,7 +35,7 @@ var playerModuleApp = angular.module('playerModuleApp', [
                     description: 'A soldier\'s best friend',
                     base_cost: 50,
                     produces: {
-                      'dosh': 10
+                      'dosh': {base: 10, at: 10, add: 0, mult: 1}
                     },
                     cost_fn: function(n) { return 10 * Math.pow(1.15, n+1) }
           }
