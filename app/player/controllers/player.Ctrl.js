@@ -48,7 +48,7 @@ function($scope,$stateParams,$state,$interval) {
   var produce = function( automatic_id, delta) {
     var automatic = $state.current.data.config.automatics[automatic_id];
     var count = $state.current.data.buildings[automatic_id].count;
-    var base_rate = automatic.produces['dosh'];
+    var base_rate = automatic.produces['dosh'].at;
     $state.current.data.resources['dosh'] += count * base_rate * delta / 1000;
   };
 }]);

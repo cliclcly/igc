@@ -46,8 +46,9 @@ var playerModuleApp = angular.module('playerModuleApp', [
             description: 'Everything\'s better with more explosions',
             cost: 1000,
             effect: {
-              target_id: 'm4',
-              target_property: 'produces.dosh',
+              target: 'm4',
+              prop: 'produces',
+              resource: 'dosh',
               add: 0.5,
               mult: 1
             }

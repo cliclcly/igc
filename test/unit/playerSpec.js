@@ -17,15 +17,7 @@ describe('Player Controller', function() {
     $state = $injector.get('$state');
 
     $state.current.data = { resources: {'dosh': 0}, buildings: {} };
-    $state.current.data.config = { automatics: {
-      '9mm': {  name: '9mm',
-                description: '9mm',
-                base_cost: 1,
-                produces: {
-                  dosh: 1
-                }
-              }
-    }};
+    $state.current.data.config = test_config;
 
     $stateParams = $injector.get('$stateParams');
   }));

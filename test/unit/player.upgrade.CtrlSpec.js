@@ -16,13 +16,7 @@ describe('Player Upgrades Controller', function() {
 
     $state = $injector.get('$state');
     $state.current.data = { test : { stateChangeCount: 0 }};
-    $state.current.data.config = { automatics: {
-      '9mm': {  name: '9mm',
-                description: '9mm',
-                base_cost: 1,
-                cost_fn: function(n) {return n+1;}
-              }
-    }};
+    $state.current.data.config = test_config;
 
     $stateParams = $injector.get('$stateParams');
   }));
@@ -100,19 +94,6 @@ describe('Player Upgrades Controller', function() {
                                         }
                                       }
                                     };
-
-    $state.current.data.config.upgrades = {
-      'exp_rounds': {
-        cost: 1000,
-        effect: {
-          target: 'm4',
-          prop: 'produces',
-          resource: 'dosh',
-          add: 0.5,
-          mult: 1
-        }
-      }
-    };
 
     var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
                                                       '$state': $state,
