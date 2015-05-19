@@ -12,6 +12,14 @@ function($scope,$stateParams,$state) {
     resource: {}
   };
 
+  $scope.submit = function(form) {
+    if(form.$invalid) {
+      alert("Form is invalid");
+      return;
+    }
+    console.log($scope.selected);
+  };
+
 
 
 }]);

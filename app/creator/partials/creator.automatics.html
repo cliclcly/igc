@@ -1,13 +1,17 @@
-<li class='igc-auto'>
-    <span>
-        <input placeholder='Automatic name'/>
-        <select ng-model="selected.resource" ng-options="res as res.name for res in $state.current.data.creator.resources | orderBy: 'name'"></select>
-        <input placeholder='Base cost'/>
-        <input placeholder='Scale'/>
-        <select>
-            <option>%</option>
-            <option>^</option>
-        </select>
-    </span>
-    {{resource}}
-</li>
+<form name="automaticsForm" ng-submit="submit(automaticsForm)" novalidate>
+  <button type="submit">Submit</button>
+  <li class='igc-auto'>
+      <span>
+          <input required ng-model="selected.name" placeholder='Automatic name'/>
+          <select required ng-model="selected.resource" ng-options="res as res.name for res in $state.current.data.creator.resources | orderBy: 'name'"></select>
+          <input required ng-model="selected.baseCost" placeholder='Base cost'/>
+          <input ng-model="selected.scale" placeholder='Scale'/>
+          <select ng-required="selected.scale" ng-model="selected.scaleType">
+              <option value="">None</option>
+              <option value="%">%</option>
+              <option value="^">^</option>
+          </select>
+      </span>
+      {{resource}}
+  </li>
+</form>
