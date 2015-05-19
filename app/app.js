@@ -27,7 +27,8 @@ var app = angular.module('app', [
         stateChangeCount: 0
       },
       creator: {
-        resources: []
+        resources: [],
+        automatics: []
       }
     }
   });

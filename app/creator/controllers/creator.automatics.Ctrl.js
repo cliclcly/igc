@@ -17,7 +17,9 @@ function($scope,$stateParams,$state) {
       alert("Form is invalid");
       return;
     }
-    console.log($scope.selected);
+    var copy = angular.copy($scope.selected);
+    $state.current.data.creator.automatics.push(copy);
+    $scope.selected = {};
   };
 
 
