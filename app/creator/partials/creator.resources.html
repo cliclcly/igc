@@ -13,9 +13,9 @@
       <div class="form-label">Name</div>
       <input name="name" type="text" class="form-input" required ng-model="resourceInfo.name">
     </div>
-    <div class="form-group" data-ng-class="{ 'has-error' : resourceForm.rate.$invalid && resourceForm.$submitted}">
-      <div class="form-label">Rate</div>
-      <input name="rate" type="number" class="form-input" required ng-model="resourceInfo.rate">
+    <div class="form-group" data-ng-class="{ 'has-error' : resourceForm.desc.$invalid && resourceForm.$submitted}">
+      <div class="form-label">Description</div>
+      <textarea name="desc" rows="5" class="form-input" required ng-model="resourceInfo.description">
     </div>
   </form>
 </div>
