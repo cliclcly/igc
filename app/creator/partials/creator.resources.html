@@ -1,4 +1,4 @@
-<div class="igc-resource-list">
+<div class="igc-list">
   <ul>
     <li ng-click="edit($index)" ng-repeat="res in $state.current.data.creator.resources | orderBy: 'name'" class='igc-resource'>
       {{res.name}}  <span class="fa fa-remove" ng-click="remove($index)"></span>
@@ -6,7 +6,7 @@
   </ul>
 </div>
 
-<div class=" igc-resource-form">
+<div class=" igc-form">
   <form data-ng-submit="submit(resourceForm)" name="resourceForm" novalidate>
     <button type="submit">Save</button>
     <div class="form-group" data-ng-class="{ 'has-error' : resourceForm.name.$invalid && resourceForm.$submitted}">

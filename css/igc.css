@@ -148,13 +148,13 @@ body {
     line-height: 53px;
 }
 
-.igc-resource-list {
+.igc-list {
   display: inline-block;
   vertical-align: top;
   width: 30%;
 }
 
-.igc-resource-form {
+.igc-form {
   display: inline-block;
   vertical-align: top;
   width: 65%;
