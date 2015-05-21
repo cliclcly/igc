@@ -28,7 +28,7 @@ var app = angular.module('app', [
       },
       creator: {
         resources: [],
-        automatics: []
+        generators: []
       }
     }
   });

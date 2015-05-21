@@ -1,4 +1,4 @@
-<form name="automaticsForm" ng-submit="submit(automaticsForm)" novalidate>
+<form name="generatorsForm" ng-submit="submit(generatorsForm)" novalidate>
   <button type="submit">Submit</button>
   <li class='igc-auto'>
       <span>
@@ -17,5 +17,5 @@
 </form>
 
 <ul>
-  <li ng-repeat="auto in $state.current.data.creator.automatics" class='igc-resource'>{{auto.name}}<li>
+  <li ng-repeat="auto in $state.current.data.creator.generators" class='igc-resource'>{{auto.name}}<li>
 </ul>

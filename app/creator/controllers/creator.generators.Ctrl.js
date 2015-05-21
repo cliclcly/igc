@@ -1,11 +1,11 @@
 (function() {
 'use strict';
 
-var creatorAutomaticsController = angular.module('creatorAutomaticsController', []);
+var creatorGeneratorsController = angular.module('creatorGeneratorsController', []);
 
-creatorAutomaticsController.controller('creator.automatics.Ctrl', ['$scope','$stateParams','$state',
+creatorGeneratorsController.controller('creator.generators.Ctrl', ['$scope','$stateParams','$state',
 function($scope,$stateParams,$state) {
-  console.log("Automatics Controller");
+  console.log("generators Controller");
   $state.current.data.test.stateChangeCount++;
 
   $scope.selected = {
@@ -18,7 +18,7 @@ function($scope,$stateParams,$state) {
       return;
     }
     var copy = angular.copy($scope.selected);
-    $state.current.data.creator.automatics.push(copy);
+    $state.current.data.creator.generators.push(copy);
     $scope.selected = {};
   };
 

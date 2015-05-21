@@ -4,7 +4,7 @@
 var creatorModuleApp = angular.module('creatorModuleApp', [
   'creatorController',
   'creatorResourcesController',
-  'creatorAutomaticsController',
+  'creatorGeneratorsController',
   'creatorUpgradesController'
 
 
@@ -30,10 +30,10 @@ var creatorModuleApp = angular.module('creatorModuleApp', [
     templateUrl: 'app/creator/partials/creator.resources.html',
     controller: 'creator.resources.Ctrl'
   })
-  .state('ig.creator.automatics', {
-    url: '/automatics',
-    templateUrl: 'app/creator/partials/creator.automatics.html',
-    controller: 'creator.automatics.Ctrl'
+  .state('ig.creator.generators', {
+    url: '/generators',
+    templateUrl: 'app/creator/partials/creator.generators.html',
+    controller: 'creator.generators.Ctrl'
   })
   .state('ig.creator.upgrades', {
     url: '/upgrades',
