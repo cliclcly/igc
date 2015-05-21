@@ -30,6 +30,17 @@ var test_config = {
         add: 0.5,
         mult: 1
       }
+    },
+    '3d_printing': {
+      name: '3D Printers',
+      description: 'Plastic pistols: half the cost, double the fun',
+      cost: 10000,
+      effect: {
+        target: '9mm',
+        prop: 'base_cost',
+        add: 0,
+        mult: 0.5
+      }
     }
   }
 };
