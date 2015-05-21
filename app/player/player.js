@@ -15,11 +15,9 @@ var playerModuleApp = angular.module('playerModuleApp', [
     abstract: true,
     data: {
       resources: {
-        'dosh': 0
+        'dosh': 1000000
       },
-      buildings : {
-        '9mm': { count: 0 }
-      },
+      buildings: {},
       config: test_config
     },
     views: {

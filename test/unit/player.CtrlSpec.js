@@ -16,7 +16,7 @@ describe('Player Controller', function() {
     $injector = _$injector_;
     $state = $injector.get('$state');
 
-    $state.current.data = { resources: {'dosh': 0}, buildings: {} };
+    $state.current.data = {};
     $state.current.data.config = test_config;
 
     $stateParams = $injector.get('$stateParams');
@@ -27,6 +27,7 @@ describe('Player Controller', function() {
                                             '$state':$state,
                                             'stateParams':$stateParams });
 
+    $scope.updateGame(1);
     $scope.$broadcast('killzed', []);
 
     expect( $state.current.data.resources['dosh'] ).toBe(1);
@@ -51,9 +52,9 @@ describe('Player Controller', function() {
                                             '$stateParams': $stateParams });
 
     $scope.updateGame(1);
-    var base_cost = $state.current.data.config.automatics['9mm'].base_cost;
-    var current_cost = $state.current.data.buildings['9mm'].cost;
+    var base_cost = $state.current.data.config.automatics['9mm'].base_cost['dosh'];
+    var current_cost = $state.current.data.buildings['9mm'].costs['dosh'].at;
 
-    expect( base_cost ).toEqual( current_cost );
+    expect( base_cost ).toEqual( current_cost ); 
   });
 });

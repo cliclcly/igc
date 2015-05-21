@@ -1,9 +1,13 @@
 var test_config = {
-  resources: { name: 'Dosh', description: 'Money money money'},
+  resources: {
+    'dosh': {name: 'Dosh', description: 'Money money money'}
+  },
   automatics: {
     '9mm': {  name: '9mm',
               description: 'Standard issue nine millimeter pistol',
-              base_cost: 1,
+              base_cost: {
+                'dosh': 1
+              },
               produces: {
                 'dosh': {base: 1, at: 1, add: 0, mult: 1}
               },
@@ -11,7 +15,9 @@ var test_config = {
     },
     'm4': {   name: 'm4',
               description: 'A soldier\'s best friend',
-              base_cost: 50,
+              base_cost: {
+                'dosh': 50
+              },
               produces: {
                 'dosh': {base: 10, at: 10, add: 0, mult: 1}
               },

@@ -5,13 +5,13 @@
     <p>{{automatic.name}}</p>
     <p>{{automatic.description}}</p>
     <p>{{automatic.base_cost}}</p>
-    <p>Cost: {{$state.current.data.buildings[id].cost}}</p>
+    <p>Cost: {{$state.current.data.buildings[id].costs['dosh'].at}}</p>
     <button ng-click="buy( id )">Buy</button>
   </li>
   <li ng-repeat="(id, upgrade) in $state.current.data.config.upgrades">
     <p>{{upgrade.name}}</p>
     <p>{{upgrade.description}}</p>
-    <p>Cost: {{upgrade.cost}}</p>
+    <p>Cost: {{upgrade.costs}}</p>
     <button ng-click="buy_upgrade( id )">Buy</button>
   </li>
 </ul>

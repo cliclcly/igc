@@ -15,17 +15,7 @@ function($scope,$stateParams,$state,$interval) {
   $scope.updateGame = function( time ) {
     if ( ! $scope.last_time ) {
       $scope.last_time = time;
-
-      for (var id in $state.current.data.config.automatics) {
-        if ($state.current.data.config.automatics.hasOwnProperty(id)) {
-          var automatic = $state.current.data.config.automatics[id];
-
-          $state.current.data.buildings[id] = { count: 0,
-                                                cost: automatic.base_cost,
-                                                produces: automatic.produces};
-        }
-      }
-
+      IGC_initGame($state);
     } else {
       delta = time - $scope.last_time;
 
@@ -54,3 +44,40 @@ function($scope,$stateParams,$state,$interval) {
   };
 }]);
 }());
+
+var IGC_initGame = function($state) {
+  if ( typeof $state.current.data.buildings == 'undefined') {
+    $state.current.data.buildings = {};
+  }
+
+  for (var id in $state.current.data.config.automatics) {
+    if ($state.current.data.config.automatics.hasOwnProperty(id)) {
+      var buildings = $state.current.data.buildings;
+      var automatic = $state.current.data.config.automatics[id];
+
+      buildings[id] = { count: 0,
+                        costs: {},
+                        produces: automatic.produces};
+
+      for (var cost_id in automatic.base_cost) {
+        if (automatic.base_cost.hasOwnProperty(cost_id)) {
+          buildings[id].costs[cost_id] = { base: automatic.base_cost[cost_id],
+                                  at: automatic.base_cost[cost_id],
+                                  add: 0,
+                                  mult: 1};
+        }
+      }
+
+    }
+  }
+
+  if (typeof $state.current.data.resources == 'undefined') {
+    $state.current.data.resources = {};
+
+    for (var id in $state.current.data.config.resources) {
+      if ( $state.current.data.config.resources.hasOwnProperty(id) ) {
+        $state.current.data.resources[id] = 0;
+      }
+    }
+  };
+}
