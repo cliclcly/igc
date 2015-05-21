@@ -37,7 +37,8 @@ var test_config = {
       cost: 10000,
       effect: {
         target: '9mm',
-        prop: 'base_cost',
+        prop: 'costs',
+        resource: 'dosh',
         add: 0,
         mult: 0.5
       }

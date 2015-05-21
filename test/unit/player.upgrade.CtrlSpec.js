@@ -85,10 +85,10 @@ describe('Player Upgrades Controller', function() {
     expect( $state.current.data.buildings['9mm'].cost).toBe(2);
   });
 
-  it('should change building property on upgrade purchase', function() {
+  it('should change building property on additive upgrade purchase', function() {
     $state.current.data.buildings = { 'm4': {
                                         count: 1,
-                                        cost: 0,
+                                        cost: {},
                                         produces: {
                                           'dosh': {base: 10, at: 10, add: 0, mult: 1}
                                         }
@@ -101,5 +101,35 @@ describe('Player Upgrades Controller', function() {
 
     $scope.buy_upgrade('exp_rounds');
     expect( $state.current.data.buildings['m4'].produces['dosh'].at ).toBe(15);
+  });
+
+  it('should change building property on multiplicative upgrade purchase', function() {
+    $state.current.data.buildings = {
+      'm4': {
+        count: 1,
+        costs: {
+          'dosh': {base: 10, at: 10, add: 0, mult: 1}
+        }
+      }
+    };
+
+    $state.current.data.config.upgrades['test'] = {
+      cost: 10,
+      effect: {
+          target: 'm4',
+          prop: 'costs',
+          resource: 'dosh',
+          add: 0,
+          mult: 0.5
+      }
+    };
+
+    var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
+                                                      '$state': $state,
+                                                      '$stateParams': $stateParams });
+
+    $scope.buy_upgrade('test');
+    expect( $state.current.data.buildings['m4'].costs['dosh'].base ).toBe(10);
+    expect( $state.current.data.buildings['m4'].costs['dosh'].at ).toBe(5);
   });
 });
