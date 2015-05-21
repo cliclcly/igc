@@ -21,7 +21,7 @@ var test_config = {
               produces: {
                 'dosh': {base: 10, at: 10, add: 0, mult: 1}
               },
-              cost_fn: function(n) { return 10 * Math.pow(1.15, n+1) }
+              cost_fn: function(n) { return 50 * Math.pow(1.15, n) }
     }
   },
   upgrades: {

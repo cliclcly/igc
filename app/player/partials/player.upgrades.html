@@ -5,7 +5,7 @@
     <p>{{automatic.name}}</p>
     <p>{{automatic.description}}</p>
     <p>{{automatic.base_cost}}</p>
-    <p>Cost: {{$state.current.data.buildings[id].costs['dosh'].at}}</p>
+    <p>Cost: {{cost_for_generator(id)}}</p>
     <button ng-click="buy( id )">Buy</button>
   </li>
   <li ng-repeat="(id, upgrade) in $state.current.data.config.upgrades">

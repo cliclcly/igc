@@ -75,15 +75,6 @@ describe('Player Upgrades Controller', function() {
   });
 
   it('should change building property on additive upgrade purchase', function() {
-    $state.current.data.buildings = { 'm4': {
-                                        count: 1,
-                                        cost: {},
-                                        produces: {
-                                          'dosh': {base: 10, at: 10, add: 0, mult: 1}
-                                        }
-                                      }
-                                    };
-
     var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
                                                       '$state': $state,
                                                       '$stateParams': $stateParams });
@@ -93,14 +84,6 @@ describe('Player Upgrades Controller', function() {
   });
 
   it('should change building property on multiplicative upgrade purchase', function() {
-    $state.current.data.buildings = {
-      'm4': {
-        count: 1,
-        costs: {
-          'dosh': {base: 10, at: 10, add: 0, mult: 1}
-        }
-      }
-    };
 
     $state.current.data.config.upgrades['test'] = {
       cost: 10,
@@ -118,7 +101,7 @@ describe('Player Upgrades Controller', function() {
                                                       '$stateParams': $stateParams });
 
     $scope.buy_upgrade('test');
-    expect( $state.current.data.buildings['m4'].costs['dosh'].base ).toBe(10);
-    expect( $state.current.data.buildings['m4'].costs['dosh'].at ).toBe(5);
+    expect( $state.current.data.buildings['m4'].costs['dosh'].base ).toBe(50);
+    expect( $state.current.data.buildings['m4'].costs['dosh'].at ).toBe(25);
   });
 });

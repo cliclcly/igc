@@ -15,7 +15,6 @@ function($scope,$stateParams,$state,$interval) {
   $scope.updateGame = function( time ) {
     if ( ! $scope.last_time ) {
       $scope.last_time = time;
-      IGC_initGame($state);
     } else {
       delta = time - $scope.last_time;
 
@@ -42,6 +41,8 @@ function($scope,$stateParams,$state,$interval) {
     var rate = $state.current.data.buildings[automatic_id].produces['dosh'].at;
     $state.current.data.resources['dosh'] += count * rate * delta / 1000;
   };
+
+  IGC_initGame($state);
 }]);
 }());
 
