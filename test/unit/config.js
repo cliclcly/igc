@@ -2,7 +2,7 @@ var test_config = {
   resources: {
     'dosh': {name: 'Dosh', description: 'Money money money'}
   },
-  automatics: {
+  generators: {
     '9mm': {  name: '9mm',
               description: 'Standard issue nine millimeter pistol',
               base_cost: {

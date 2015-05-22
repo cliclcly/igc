@@ -1,10 +1,10 @@
 <h3>Player Upgrades</h3>
 
 <ul>
-  <li ng-repeat="(id, automatic) in $state.current.data.config.automatics">
-    <p>{{automatic.name}}</p>
-    <p>{{automatic.description}}</p>
-    <p>{{automatic.base_cost}}</p>
+  <li ng-repeat="(id, generator) in $state.current.data.config.generators">
+    <p>{{generator.name}}</p>
+    <p>{{generator.description}}</p>
+    <p>{{generator.base_cost}}</p>
     <p>Cost: {{cost_for_generator(id)}}</p>
     <button ng-click="buy( id )">Buy</button>
   </li>

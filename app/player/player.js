@@ -17,7 +17,7 @@ var playerModuleApp = angular.module('playerModuleApp', [
       resources: {
         'dosh': 1000000
       },
-      buildings: {},
+      generators: {},
       config: test_config
     },
     views: {

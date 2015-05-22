@@ -40,7 +40,7 @@ describe('Player Controller', function() {
 
     // simulate game loop running for 1 second
     $scope.updateGame(1);
-    $state.current.data.buildings['9mm'].count++;
+    $state.current.data.generators['9mm'].count++;
     $scope.updateGame(1001);
 
     expect( $state.current.data.resources['dosh'] ).toBe(1);
@@ -52,9 +52,9 @@ describe('Player Controller', function() {
                                             '$stateParams': $stateParams });
 
     $scope.updateGame(1);
-    var base_cost = $state.current.data.config.automatics['9mm'].base_cost['dosh'];
-    var current_cost = $state.current.data.buildings['9mm'].costs['dosh'].at;
+    var base_cost = $state.current.data.config.generators['9mm'].base_cost['dosh'];
+    var current_cost = $state.current.data.generators['9mm'].costs['dosh'].at;
 
-    expect( base_cost ).toEqual( current_cost ); 
+    expect( base_cost ).toEqual( current_cost );
   });
 });

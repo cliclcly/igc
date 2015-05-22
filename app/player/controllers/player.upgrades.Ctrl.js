@@ -8,16 +8,16 @@ function($scope,$stateParams,$state) {
   $state.current.data.test.stateChangeCount++;
 
   $scope.buy = function( type ) {
-    var automatic = $state.current.data.config.automatics[type];
-    var building = $state.current.data.buildings[type];
+    var gen_config = $state.current.data.config.generators[type];
+    var generator = $state.current.data.generators[type];
 
-    if ($state.current.data.resources['dosh'] < building.costs['dosh'].at) {
+    if ($state.current.data.resources['dosh'] < generator.costs['dosh'].at) {
       console.log('Not enough dosh for that one, babe');
       return;
     }
 
-    building.count++;
-    $state.current.data.resources['dosh'] -= building.costs['dosh'].at;
+    generator.count++;
+    $state.current.data.resources['dosh'] -= generator.costs['dosh'].at;
 
     update_costs(type);
     update_produces(type);
@@ -25,10 +25,10 @@ function($scope,$stateParams,$state) {
 
   $scope.buy_upgrade = function (type) {
     var config = $state.current.data.config.upgrades[type];
-    var buildings = $state.current.data.buildings;
+    var generators = $state.current.data.generators;
 
-    var building = buildings[config.effect.target];
-    var prop = building[config.effect.prop];
+    var generator = generators[config.effect.target];
+    var prop = generator[config.effect.prop];
 
     var resource = prop[config.effect.resource];
     resource.add += config.effect.add;
@@ -39,35 +39,35 @@ function($scope,$stateParams,$state) {
   };
 
   $scope.cost_for_generator = function(type) {
-    var building = $state.current.data.buildings[type];
-    return building.costs['dosh'].at;
+    var generator = $state.current.data.generators[type];
+    return generator.costs['dosh'].at;
   }
 
   var update_costs = function(type) {
-    var building = $state.current.data.buildings[type];
-    var generator_config = $state.current.data.config.automatics[type];
+    var generator = $state.current.data.generators[type];
+    var generator_config = $state.current.data.config.generators[type];
 
     for (var cost_id in generator_config.base_cost) {
       if (generator_config.base_cost.hasOwnProperty(cost_id)) {
-        var building_cost = building.costs[cost_id];
+        var generator_cost = generator.costs[cost_id];
 
-        var level_cost = generator_config.cost_fn( building.count );
-        building_cost.at = level_cost * (1 + building_cost.add) * building_cost.mult;
+        var level_cost = generator_config.cost_fn( generator.count );
+        generator_cost.at = level_cost * (1 + generator_cost.add) * generator_cost.mult;
       }
     }
   }
 
   var update_produces = function(type) {
-    var building = $state.current.data.buildings[type];
-    var generator_config = $state.current.data.config.automatics[type];
+    var generator = $state.current.data.generators[type];
+    var generator_config = $state.current.data.config.generators[type];
 
     for (var produces_id in generator_config.produces) {
       if (generator_config.produces.hasOwnProperty(produces_id)) {
-        var building_produces = building.produces[ produces_id ];
+        var gen_produces = generator.produces[ produces_id ];
 
-        building_produces.at = building_produces.base
-                                * (1 + building_produces.add)
-                                * building_produces.mult;
+        gen_produces.at = gen_produces.base
+                          * (1 + gen_produces.add)
+                          * gen_produces.mult;
       }
     }
   }

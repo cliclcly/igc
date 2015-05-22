@@ -18,9 +18,9 @@ function($scope,$stateParams,$state,$interval) {
     } else {
       delta = time - $scope.last_time;
 
-      for (var building in $state.current.data.buildings) {
-        if ($state.current.data.buildings.hasOwnProperty( building )) {
-          produce.call(this, building, delta);
+      for (var generator in $state.current.data.generators) {
+        if ($state.current.data.generators.hasOwnProperty( generator )) {
+          produce.call(this, generator, delta);
         }
       }
 
@@ -35,10 +35,10 @@ function($scope,$stateParams,$state,$interval) {
 
   window.requestAnimationFrame( $scope.updateGame );
 
-  var produce = function( automatic_id, delta) {
-    var automatic = $state.current.data.config.automatics[automatic_id];
-    var count = $state.current.data.buildings[automatic_id].count;
-    var rate = $state.current.data.buildings[automatic_id].produces['dosh'].at;
+  var produce = function( gen_id, delta) {
+    var generator = $state.current.data.config.generators[ gen_id ];
+    var count = $state.current.data.generators[ gen_id ].count;
+    var rate = $state.current.data.generators[ gen_id ].produces['dosh'].at;
     $state.current.data.resources['dosh'] += count * rate * delta / 1000;
   };
 
@@ -47,28 +47,27 @@ function($scope,$stateParams,$state,$interval) {
 }());
 
 var IGC_initGame = function($state) {
-  if ( typeof $state.current.data.buildings == 'undefined') {
-    $state.current.data.buildings = {};
+  if ( typeof $state.current.data.generators == 'undefined') {
+    $state.current.data.generators = {};
   }
 
-  for (var id in $state.current.data.config.automatics) {
-    if ($state.current.data.config.automatics.hasOwnProperty(id)) {
-      var buildings = $state.current.data.buildings;
-      var automatic = $state.current.data.config.automatics[id];
+  for (var id in $state.current.data.config.generators) {
+    if ($state.current.data.config.generators.hasOwnProperty(id)) {
+      var generators = $state.current.data.generators;
+      var gen_config = $state.current.data.config.generators[id];
 
-      buildings[id] = { count: 0,
-                        costs: {},
-                        produces: automatic.produces};
+      generators[id] = {  count: 0,
+                          costs: {},
+                          produces: gen_config.produces};
 
-      for (var cost_id in automatic.base_cost) {
-        if (automatic.base_cost.hasOwnProperty(cost_id)) {
-          buildings[id].costs[cost_id] = { base: automatic.base_cost[cost_id],
-                                  at: automatic.base_cost[cost_id],
-                                  add: 0,
-                                  mult: 1};
+      for (var cost_id in gen_config.base_cost) {
+        if (gen_config.base_cost.hasOwnProperty(cost_id)) {
+          generators[id].costs[cost_id] = { base: gen_config.base_cost[cost_id],
+                                            at: gen_config.base_cost[cost_id],
+                                            add: 0,
+                                            mult: 1};
         }
       }
-
     }
   }
 
