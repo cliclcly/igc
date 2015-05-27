@@ -12,6 +12,9 @@
     <p>{{upgrade.name}}</p>
     <p>{{upgrade.description}}</p>
     <p>Cost: {{upgrade.costs}}</p>
-    <button ng-disabled="$state.current.data.upgrades.bought.indexOf(id) !== -1" ng-click="buy_upgrade( id )">Buy</button>
+    <button ng-disabled="$state.current.data.upgrades.bought.indexOf(id) !== -1"
+            ng-click="buy_upgrade( id )">
+            Buy
+    </button>
   </li>
 </ul>
