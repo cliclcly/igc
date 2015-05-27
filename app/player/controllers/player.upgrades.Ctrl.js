@@ -24,6 +24,10 @@ function($scope,$stateParams,$state) {
   };
 
   $scope.buy_upgrade = function (type) {
+    if ($state.current.data.upgrades.bought.indexOf(type) !== -1) {
+      return;
+    }
+    
     var config = $state.current.data.config.upgrades[type];
     var generators = $state.current.data.generators;
 
@@ -36,6 +40,9 @@ function($scope,$stateParams,$state) {
 
     update_costs(config.effect.target);
     update_produces(config.effect.target);
+
+    var bought = $state.current.data.upgrades.bought;
+    bought.push( type );
   };
 
   $scope.cost_for_generator = function(type) {

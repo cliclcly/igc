@@ -51,6 +51,7 @@ var IGC_initGame = function($state) {
     $state.current.data.generators = {};
   }
 
+  // generators
   for (var id in $state.current.data.config.generators) {
     if ($state.current.data.config.generators.hasOwnProperty(id)) {
       var generators = $state.current.data.generators;
@@ -71,6 +72,7 @@ var IGC_initGame = function($state) {
     }
   }
 
+  // resources
   if (typeof $state.current.data.resources == 'undefined') {
     $state.current.data.resources = {};
 
@@ -80,4 +82,13 @@ var IGC_initGame = function($state) {
       }
     }
   };
+
+  // upgrades
+  if (typeof $state.current.data.upgrades == 'undefined') {
+    $state.current.data.upgrades = { bought: [] };
+
+    $state.current.data.upgrades.hasBought = function(upgrade) {
+      return $state.current.data.upgrades.bought.indexOf(upgrade) != -1;
+    }
+  }
 }

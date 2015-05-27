@@ -28,7 +28,9 @@ var test_config = {
     'exp_rounds': {
       name: 'Explosive Rounds',
       description: 'Everything\'s better with more explosions',
-      cost: 1000,
+      costs: {
+        'dosh': 1000
+      },
       effect: {
         target: 'm4',
         prop: 'produces',
@@ -40,7 +42,9 @@ var test_config = {
     '3d_printing': {
       name: '3D Printers',
       description: 'Plastic pistols: half the cost, double the fun',
-      cost: 10000,
+      costs: {
+        'dosh': 10000
+      },
       effect: {
         target: '9mm',
         prop: 'costs',

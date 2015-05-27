@@ -104,4 +104,39 @@ describe('Player Upgrades Controller', function() {
     expect( $state.current.data.generators['m4'].costs['dosh'].base ).toBe(50);
     expect( $state.current.data.generators['m4'].costs['dosh'].at ).toBe(25);
   });
+
+  it('shouldn\'t allow buying an upgrade twice', function() {
+    $state.current.data.config.generators['test'] = {
+      base_cost: { 'dosh': 0 },
+      produces: {'dosh': {base: 1, at: 1, add: 0, mult: 1} },
+      cost_fn: function(n) { n }
+    };
+
+    $state.current.data.config.upgrades['test'] = {
+      cost: 0,
+      effect: {
+        target: 'test',
+        prop: 'produces',
+        resource: 'dosh',
+        add: 0,
+        mult: 2
+      }
+    };
+
+    var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
+                                                      '$state': $state,
+                                                      '$stateParams': $stateParams });
+
+    IGC_initGame($state);
+    expect( $state.current.data.generators['test'].produces['dosh'].at ).toBe(1);
+    $scope.buy_upgrade('test');
+    expect( $state.current.data.generators['test'].produces['dosh'].at ).toBe(2);
+
+    // check hasBought
+    expect( $state.current.data.upgrades.hasBought('test') ).toBe(true);
+
+    // try another buy, make sure production hasn't increased
+    $scope.buy_upgrade('test');
+    expect( $state.current.data.generators['test'].produces['dosh'].at ).toBe(2);
+  });
 });
