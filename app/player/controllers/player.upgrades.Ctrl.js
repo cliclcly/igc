@@ -27,7 +27,7 @@ function($scope,$stateParams,$state) {
     if ($state.current.data.upgrades.bought.indexOf(type) !== -1) {
       return;
     }
-    
+
     var config = $state.current.data.config.upgrades[type];
     var generators = $state.current.data.generators;
 

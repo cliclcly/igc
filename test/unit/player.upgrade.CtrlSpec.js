@@ -30,8 +30,8 @@ describe('Player Upgrades Controller', function() {
                                                       '$state': $state,
                                                       '$stateParams': $stateParams });
 
+    expect( $state.current.data.generators['9mm'].count).toBe(0);
     $scope.buy('9mm');
-
     expect($state.current.data.generators['9mm'].count).toBe(1);
   });
 

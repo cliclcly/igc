@@ -107,7 +107,7 @@ body {
     position: relative;
     max-width: 512px;
     height: 64px;
-    margin: 4px 0px;
+    margin: 8px 4px;
     padding: 6px 4px 4px 4px;
     background-color: #FFBA79;
     border-radius: 5px;
@@ -146,4 +146,60 @@ body {
 
 .igc-auto span {
     line-height: 53px;
+}
+
+.tt-trigger .tt {
+  visibility: collapse;
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  background-color: #AAAAAA;
+  height: 64px;
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #999999;
+  background-clip: padding-box;
+}
+
+.tt-trigger:not(:last-child) .tt:before {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  border-bottom: 8px solid #AAA;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.tt-trigger:last-child .tt {
+  top: -64px;
+}
+
+.tt-trigger:last-child .tt:after {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 64px;
+  left: 16px;
+
+  border-top: 8px solid #AAA;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.tt-trigger:hover .tt {
+  visibility: visible;
+}
+
+.igc-column {
+  width: 50%;
+  min-width: 512px;
+  position: relative;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
 }
