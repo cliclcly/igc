@@ -14,10 +14,8 @@ var playerModuleApp = angular.module('playerModuleApp', [
     url: '/player',
     abstract: true,
     data: {
-      resources: {
-        'dosh': 1000000
-      },
       generators: {},
+      resources: {},
       config: test_config
     },
     views: {

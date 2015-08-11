@@ -1,1 +1,9 @@
-<button ng-click="killZed()">Kill zed</button>
+<div class="igc-column">
+  <button ng-click="killZed()">Kill zed</button>
+</div>
+<div class="igc-column">
+  {{$state.current.data.resources}}
+  <ul ng-repeat="(id, res) in $state.current.data.resources">
+    <li>{{$state.current.data.resources[id].name + ": " + res}}</li>
+  </ul>
+</div>

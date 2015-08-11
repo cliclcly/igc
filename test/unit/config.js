@@ -1,6 +1,7 @@
 var test_config = {
   resources: {
-    'dosh': {name: 'Dosh', description: 'Money money money'}
+    'dosh': {name: 'Dosh', description: 'Money money money'},
+    'goresword': {name: 'Goresword', description: 'Gorefast. Goresword.'}
   },
   generators: {
     '9mm': {  name: '9mm',
@@ -22,6 +23,28 @@ var test_config = {
                 'dosh': {base: 10, at: 10, add: 0, mult: 1}
               },
               cost_fn: function(n) { return 50 * Math.pow(1.15, n) }
+    },
+    'scar': { name: 'SCAR',
+              description: 'Now this is an assault rifle',
+              base_cost: {
+                'dosh': 1000,
+              },
+              produces: {
+                'dosh': {base: 250, at: 250, add: 0, mult: 1},
+                'goresword': {base: 0.1, at: 0.1, add: 0, mult: 1}
+              },
+              cost_fn: function(n) { return 1000 * Math.pow(1.3, n) }
+    },
+    'goresword': {  name: 'Goresword',
+                    description: 'Not particularly sharp, but still quite functional.',
+                    base_cost: {
+                      'dosh': 100,
+                      'goresword': 1
+                    },
+                    produces: {
+                      'goresword': {base: 1, at: 1, add: 0, mult: 1}
+                    },
+                    cost_fn: function(n) { return 1 * Math.pow(1.5, n) }
     }
   },
   upgrades: {

@@ -36,10 +36,15 @@ function($scope,$stateParams,$state,$interval) {
   window.requestAnimationFrame( $scope.updateGame );
 
   var produce = function( gen_id, delta) {
-    var generator = $state.current.data.config.generators[ gen_id ];
+    var generator_config = $state.current.data.config.generators[ gen_id ];
     var count = $state.current.data.generators[ gen_id ].count;
-    var rate = $state.current.data.generators[ gen_id ].produces['dosh'].at;
-    $state.current.data.resources['dosh'] += count * rate * delta / 1000;
+
+    for (var resource in generator_config.produces) {
+      if (generator_config.produces.hasOwnProperty(resource)) {
+        var rate = generator_config.produces[resource].at;
+        $state.current.data.resources[resource] += count * rate * delta / 1000;
+      }
+    }
   };
 
   IGC_initGame($state);
@@ -75,13 +80,13 @@ var IGC_initGame = function($state) {
   // resources
   if (typeof $state.current.data.resources == 'undefined') {
     $state.current.data.resources = {};
+  }
 
-    for (var id in $state.current.data.config.resources) {
-      if ( $state.current.data.config.resources.hasOwnProperty(id) ) {
-        $state.current.data.resources[id] = 0;
-      }
+  for (var id in $state.current.data.config.resources) {
+    if ( $state.current.data.config.resources.hasOwnProperty(id) ) {
+      $state.current.data.resources[id] = 0;
     }
-  };
+  }
 
   // upgrades
   if (typeof $state.current.data.upgrades == 'undefined') {

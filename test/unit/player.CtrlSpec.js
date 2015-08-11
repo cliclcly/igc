@@ -22,10 +22,23 @@ describe('Player Controller', function() {
     $stateParams = $injector.get('$stateParams');
   }));
 
+  it('should initialize resources', function() {
+    var ctrl = $controller('player.Ctrl', { '$scope': $scope,
+                                            '$state': $state,
+                                            '$stateParams': $stateParams });
+
+    for (var res in $state.current.data.config.resources) {
+      if ($state.current.data.config.resources.hasOwnProperty(res)) {
+        expect( $state.current.data.resources[res] ).toBeDefined();
+        expect( $state.current.data.resources[res] ).toBe( 0 );
+      }
+    }
+  });
+
   it('should increment money on killzed broadcast', function() {
-    var ctrl = $controller('player.Ctrl', { '$scope':$scope,
-                                            '$state':$state,
-                                            'stateParams':$stateParams });
+    var ctrl = $controller('player.Ctrl', { '$scope': $scope,
+                                            '$state': $state,
+                                            '$stateParams': $stateParams });
 
     $scope.updateGame(1);
     $scope.$broadcast('killzed', []);
@@ -44,6 +57,7 @@ describe('Player Controller', function() {
     $scope.updateGame(1001);
 
     expect( $state.current.data.resources['dosh'] ).toBe(1);
+    expect( $state.current.data.resources['goresword'] ).toBe( 0 );
   });
 
   it('should calculate initial base cost', function() {
