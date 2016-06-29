@@ -90,10 +90,12 @@ var IGC_initGame = function($state) {
 
   // upgrades
   if (typeof $state.current.data.upgrades == 'undefined') {
-    $state.current.data.upgrades = { bought: [] };
+    $state.current.data.upgrades = {};
+  }
 
-    $state.current.data.upgrades.hasBought = function(upgrade) {
-      return $state.current.data.upgrades.bought.indexOf(upgrade) != -1;
-    }
+  $state.current.data.upgrades['bought'] = [];
+  
+  $state.current.data.upgrades.hasBought = function(upgrade) {
+    return $state.current.data.upgrades.bought.indexOf(upgrade) != -1;
   }
 }

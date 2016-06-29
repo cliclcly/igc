@@ -15,6 +15,7 @@ var playerModuleApp = angular.module('playerModuleApp', [
     abstract: true,
     data: {
       generators: {},
+      upgrades: {},
       resources: {},
       config: test_config
     },

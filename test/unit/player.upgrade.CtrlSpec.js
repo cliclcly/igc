@@ -35,10 +35,11 @@ describe('Player Upgrades Controller', function() {
     expect($state.current.data.generators['9mm'].count).toBe(1);
   });
 
-  it('should decrement dosh on buy', function() {
+  it('should decrement resource on buy', function() {
     var cost = test_config.generators['9mm'].base_cost['dosh'];
 
-    $state.current.data.resources = { 'dosh': 10 };
+    $state.current.data.resources = { 'dosh': 10,
+                                      'other_dosh': 10 };
 
     var ctrl = $controller('player.upgrades.Ctrl', {  '$scope': $scope,
                                                       '$state': $state,
@@ -47,6 +48,7 @@ describe('Player Upgrades Controller', function() {
     $scope.buy('9mm');
 
     expect( $state.current.data.resources['dosh'] ).toBe(10 - cost);
+    expect( $state.current.data.resources['other_dosh'] ).toBe( 10 );
   });
 
   it('should not increment building count if not enough resource', function() {
