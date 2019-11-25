@@ -16,3 +16,6 @@ function($scope,$stateParams,$state) {
 
 }]);
 }());
+
+
+don't know what I am doing.
